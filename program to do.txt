@@ -1,0 +1,18 @@
+1.fibonacci range?
+2.prime range ?
+3.palindrome  ?
+4.next palindrome
+5.next prime
+6.next fibonacci num
+7.max total in list       ?
+8.frequent element in list  ?
+9.year.py in list folder?
+10.list comprehension?
+11.second largest number?
+12.sorting in flowcontrols?
+
+
+
+------------------------------------------
+
+1. find 2nd largest element in a list

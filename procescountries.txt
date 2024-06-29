@@ -1,0 +1,127 @@
+from json import load
+
+
+path="C:\\pythonNovemmber\\restcountries\\data.json"
+
+f=open(path,"r",encoding="UTF-8")
+
+data=load(f)
+
+# total number of data
+# print(len(data))
+# q1 print all country names
+
+
+# all_country_name=[c.get("name") for c in data]
+
+# print(all_country_name)
+
+
+# q2 country with higest population
+
+
+    # popultaion=max(data,key=lambda dictionary:dictionary.get("population"))
+
+
+    # print(popultaion.get("name"))
+
+
+#borders of specific country
+# india
+
+
+country_borders=[c.get("borders") for c in data if c.get("name")=="India"]
+# print(country_borders[0])
+
+border_filter=[c.get("name") for c in data if "borders" in c and "IND" in c.get("borders")]
+
+# print(border_filter)
+
+
+# country name with language_name
+
+values={}
+
+
+for c in data:
+    lang_list=[]
+    if "languages" in c:
+        for l in c.get("languages"):
+           
+            lang_list.append(l.get("name"))
+        values[c.get("name")]=lang_list
+# print(values.get("Afghanistan"))
+
+
+
+# countries with Indian rupee
+        
+# for c in data:
+#     if "currencies" in c:
+#         for cur in c.get("currencies"):
+#             if cur.get("name")=="Indian rupee":
+#                 print(c.get("name"))
+# country with maximum area
+
+
+# largets_country=max(data,key=lambda c:int(c.get("area")))
+# print(largets_country.get("name"))
+        
+# all countries with multiple timezone
+
+# timezone_filter=[c.get("name") for c in data if len(c.get("timezones"))>1]
+
+# print(timezone_filter)
+
+# countriename statrts with A
+
+# name_filter=[c.get("name") for c in data if c.get("name").startswith("I")]
+
+# print(name_filter)
+
+
+# independent Countries
+independent=[c.get("name") for c in data if c.get("independent")==True]
+print(independent)
+
+#regions count
+# Asia: 
+# 
+# 
+# OOP 
+# is a countries utc ahead or behind india's utc
+# afganistan
+
+india_timeZone= [c.get("timezones") for c in data if c.get("name")=="India"]
+print(india_timeZone[0][0])
+time_zone_india=india_timeZone[0][0]
+afg_timezone=[c.get("timezones") for c in data if c.get("name")=="United States of America"]
+print(afg_timezone[0][0])
+time_zone_afg=afg_timezone[0][0]
+
+india_offset=time_zone_india.lstrip("UTC").replace(":",".")
+
+afg_offset=time_zone_afg.lstrip("UTC").replace(":",".")
+
+from datetime import datetime,timedelta
+
+offset_india=timedelta(hours=float(india_offset))
+
+
+offest_usa=timedelta(hours=float(afg_offset))
+
+time_country1=datetime.utcnow()+offset_india
+print("first",time_country1)
+time_country2=datetime.utcnow()+offest_usa
+print("second",time_country1)
+time_diff=time_country1-time_country2
+# print("time difference",time_diff.total_seconds()) #>o ahead < 0 behind
+
+if(time_diff.total_seconds()>0):
+    print("ahead")
+else:
+    print("behind")
+
+
+#re 
+# Object Oriented Programming

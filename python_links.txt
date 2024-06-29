@@ -1,0 +1,3 @@
+https://pythonguides.com/python-program-to-check-leap-year/
+
+https://www.programiz.com/python-programming/examples/prime-number-intervals
